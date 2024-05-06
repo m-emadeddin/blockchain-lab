@@ -27,7 +27,7 @@ class Blockchain:
         self.chain.append([prev_hash, new_hash, transaction_data])
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     transactions = []
 
     # Generating Transactions & Add them to list
