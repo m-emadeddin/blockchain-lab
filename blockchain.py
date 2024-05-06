@@ -13,7 +13,6 @@ class Transaction:
         return hashlib.sha256(self.get_data().encode()).hexdigest()
 
 
-
 class Blockchain:
     def __init__(self, init_transaction: Transaction):
         # BLOCK : [Previous HASH, Current HASH, Transaction]
@@ -29,24 +28,20 @@ class Blockchain:
         self.chain.append([prev_hash, new_hash, transaction_data])
 
 
+if __name__ == "main":
+    transactions = []
 
+    for i in range(0, 6):
+        sender_pub, sender_priv = rsa.newkeys(1 << 10)
+        amount = random.randint(1, 50)
+        receiver_pub, receiver_priv = rsa.newkeys(1 << 10)
+        transaction = Transaction(sender_pub, amount, receiver_pub)
+        transactions.append(transaction)
 
+    my_chain = Blockchain(transactions[0])
 
+    for i in range(1, 6): 
+        my_chain.add_block(transactions[i])
 
-transactions = []
-
-for i in range(0, 6):
-    sender_pub, sender_priv = rsa.newkeys(1 << 10)
-    amount = random.randint(1, 50)
-    receiver_pub, receiver_priv = rsa.newkeys(1 << 10)
-    transaction = Transaction(sender_pub, amount, receiver_pub)
-    transactions.append(transaction)
-
-
-my_chain = Blockchain(transactions[0])
-
-for i in range(1, 6): 
-    my_chain.add_block(transactions[i])
-
-for i, block in enumerate(my_chain.chain):
-    print(f"Block #{i + 1}:\n\t- Transaction Data:\t{block[2]}\n\t- Current Hash:\t{block[1]}\n\t- Previous Hash:\t{block[0]}\n\n")
+    for i, block in enumerate(my_chain.chain):
+        print(f"Block #{i + 1}:\n\t- Transaction Data:\t{block[2]}\n\t- Current Hash:\t{block[1]}\n\t- Previous Hash:\t{block[0]}\n\n")
