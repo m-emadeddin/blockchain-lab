@@ -41,4 +41,28 @@ A2:
         - MD5
         - SHA Family: SHA-1, SHA-256, SHA-384
 
+
+Q3:
+   Discuss Encryption Algorithms 
+
+A3:
+    Encryption Algorithms:
+        Encryption algorithms are fundamental to securing data in transit and at rest.
+        They transform plaintext data into ciphertext, which can only be deciphered with the appropriate decryption key.
     
+    What is Encryption?
+        Encryption is the process of converting plaintext (normal, readable data) into ciphertext (unreadable data) using an algorithm and a key. 
+        This transformation is done to protect the confidentiality and integrity of data, ensuring that only authorized parties can access and decipher
+        the original information.
+    
+    Properties of Good Encryption Algorithms:
+        - Security: Algorithms should resist known cryptographic attacks and provide confidentiality, integrity, and authenticity.
+        - Efficiency: Encryption and decryption should be computationally feasible for practical use.
+        - Key Length: Longer key lengths generally provide stronger security against brute-force attacks.
+        - Key Management: Secure key distribution and management are crucial to maintaining encryption security.
+        - Resistance to Quantum Attacks: With the rise of quantum computing, algorithms resistant to quantum attacks gain importance.
+    
+    Encryption Algorithms Examples:
+        - AES
+        - RSA
+
