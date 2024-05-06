@@ -47,4 +47,4 @@ if __name__ == "__main__":
 
     # Inspecting the content of each block
     for i, block in enumerate(my_chain.chain):
-        print(f"Block #{i + 1}:\n\t- Transaction Data:\t{block[2]}\n\t- Current Hash:\t\t{block[1]}\n\t- Previous Hash:\t{block[0]}\n\n")
+        print(f"Block #{i + 1}:\n\t- Transaction Data:\n{block[2]}\n\t- Current Hash:\t\t{block[1]}\n\t- Previous Hash:\t{block[0]}\n\n")
