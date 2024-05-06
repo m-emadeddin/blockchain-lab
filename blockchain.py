@@ -18,7 +18,6 @@ class Blockchain:
     def __init__(self, init_transaction: Transaction):
         # BLOCK : [Previous HASH, Current HASH, Transaction]
         self.chain = [ ["NULL", init_transaction.get_hash(), init_transaction.get_data()]]        
-        print(init_transaction.get_data())
 
     def add_block(self, transaction: Transaction):
         prev_block = self.chain[-1]
@@ -36,7 +35,7 @@ class Blockchain:
 
 transactions = []
 
-for i in range(1, 7):
+for i in range(0, 6):
     sender_pub, sender_priv = rsa.newkeys(1 << 10)
     amount = random.randint(1, 50)
     receiver_pub, receiver_priv = rsa.newkeys(1 << 10)
@@ -46,6 +45,8 @@ for i in range(1, 7):
 
 my_chain = Blockchain(transactions[0])
 
-for block in my_chain.chain:
-    print(*block, sep='\n')
+for i in range(1, 6): 
+    my_chain.add_block(transactions[i])
 
+for i, block in enumerate(my_chain.chain):
+    print(f"Block #{i + 1}:\n\t- Transaction Data:\t{block[2]}\n\t- Current Hash:\t{block[1]}\n\t- Previous Hash:\t{block[0]}\n\n")
