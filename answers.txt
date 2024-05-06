@@ -17,3 +17,28 @@ Q1 & A1:
         some delay, hence it's useful to use this command to check what transactions has finished.
 
 
+Q2: 
+    Discuss Hashing algorithms
+
+A2: 
+    Hashing Algortihms:
+        Hashing algorithms are essential tools in computer science, cryptography, and data management.
+        They transform input data of variable lengths into fixed-size output, known as hash values or hash codes and it's irreversible process which makes it secure.
+        The primary purpose of hashing is to map data of arbitrary size to data of fixed size.
+
+    What is Hashing?
+        Hashing involves taking an input (or 'message') and returning a fixed-size string of bytes, typically a hexadecimal string.
+        This output is unique to each unique input. Even a small change in the input should produce a significantly different hash value.
+    
+    Properties of Good Hashing Algorithms:
+        - Deterministic: Given the same input, a hashing algorithm should always produce the same hash value.
+        - Efficiency: Hash functions should be computationally efficient to handle large volumes of data quickly.
+        - Uniformity: A good hashing algorithm distributes hash values evenly across its output space, minimizing collisions.
+        - Irreversibility: It should be computationally infeasible to determine the original input from the hash value.
+        - Avalanche Effect: A small change in the input should result in a vastly different hash value.
+    
+    Hashing Algorithms Examples:
+        - MD5
+        - SHA Family: SHA-1, SHA-256, SHA-384
+
+    
