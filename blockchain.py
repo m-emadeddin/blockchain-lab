@@ -15,13 +15,12 @@ class Transaction:
 
 class Blockchain:
     def __init__(self, init_transaction: Transaction):
-        # BLOCK : [Previous HASH, Current HASH, Transaction]
-        self.chain = [ ["NULL", init_transaction.get_hash(), init_transaction.get_data()]]        
+        # Block: [Previous HASH, Current HASH, Transaction]
+        self.chain = [["NULL", init_transaction.get_hash(), init_transaction.get_data()]]        
 
     def add_block(self, transaction: Transaction):
         prev_block = self.chain[-1]
         prev_hash = prev_block[1]
-        
         transaction_data = transaction.get_data()
         new_data = transaction_data + prev_hash
         new_hash = hashlib.sha256(new_data.encode()).hexdigest()
@@ -31,6 +30,7 @@ class Blockchain:
 if __name__ == "main":
     transactions = []
 
+    # Generating Transactions & Add them to list
     for i in range(0, 6):
         sender_pub, sender_priv = rsa.newkeys(1 << 10)
         amount = random.randint(1, 50)
@@ -38,10 +38,13 @@ if __name__ == "main":
         transaction = Transaction(sender_pub, amount, receiver_pub)
         transactions.append(transaction)
 
+    # Creating Blockchain & Adding the first block
     my_chain = Blockchain(transactions[0])
 
+    # Creating a block for each transaction & adding the block in the blockchain
     for i in range(1, 6): 
         my_chain.add_block(transactions[i])
 
+    # Inspecting the content of each block
     for i, block in enumerate(my_chain.chain):
         print(f"Block #{i + 1}:\n\t- Transaction Data:\t{block[2]}\n\t- Current Hash:\t{block[1]}\n\t- Previous Hash:\t{block[0]}\n\n")
